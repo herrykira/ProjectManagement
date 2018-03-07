@@ -1,4 +1,4 @@
-package com.example.tinku.projectmanagementsystem.fragment;
+package com.example.tinku.projectmanagementsystem.fragment.taskList;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.tinku.projectmanagementsystem.R;
 import com.example.tinku.projectmanagementsystem.adapter.TaskListAdapter;
+import com.example.tinku.projectmanagementsystem.fragment.UserFragmentSwitch;
 import com.example.tinku.projectmanagementsystem.model.Task;
 import com.example.tinku.projectmanagementsystem.model.TaskResponse;
 import com.example.tinku.projectmanagementsystem.network.RetrofitInstance;
@@ -33,24 +34,33 @@ import retrofit2.Response;
  * Created by KinhangPoon on 3/3/2018.
  */
 
-public class TaskListFragment extends Fragment {
+public class TaskListFragment extends Fragment implements TaskListView {
     TextView textViewTaskList;
     RecyclerView recyclerViewTaskList;
     UserFragmentSwitch userFragmentSwitch;
     TaskListAdapter taskListAdapter;
     SharedPreferences sharedPreferences;
+    TaskListPresenter taskListPresenter;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         userFragmentSwitch = (UserFragmentSwitch) getActivity();
         sharedPreferences = context.getSharedPreferences("myinfo",Context.MODE_PRIVATE);
+        taskListPresenter = new TaskListPresenterImpl(this);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.task_list_fragment,container,false);
+
+        taskListPresenter.createView(view);
+        return view;
+    }
+
+    @Override
+    public void updateView(View view) {
         textViewTaskList = view.findViewById(R.id.textView_task_list);
         recyclerViewTaskList = view.findViewById(R.id.recyclerView_task_list);
 
@@ -59,31 +69,13 @@ public class TaskListFragment extends Fragment {
         recyclerViewTaskList.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewTaskList.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
 
-        sendTaskListRequest();
-        return view;
+        taskListPresenter.sendTaskListRequest(sharedPreferences);
     }
-    public void sendTaskListRequest(){
-        String userId = sharedPreferences.getString("UserId","");
-        Log.i("tasklistUserId",userId);
-        if(userId.equals("")){
-            return;
-        }
-        UserService userService = RetrofitInstance.getRetrofitInstance().create(UserService.class);
-        Call<TaskResponse> call = userService.getTaskList(userId);
-        call.enqueue(new Callback<TaskResponse>() {
-            @Override
-            public void onResponse(Call<TaskResponse> call, Response<TaskResponse> response) {
-                Log.i("TaskListResponse",response.raw().toString());
-                List<Task> taskList = response.body().getTasksview();
-                taskListAdapter = new TaskListAdapter(taskList,getContext(),userFragmentSwitch);
-                recyclerViewTaskList.setAdapter(taskListAdapter);
-            }
 
-            @Override
-            public void onFailure(Call<TaskResponse> call, Throwable t) {
-                Log.e("TaskListError",t.getMessage().toString());
-            }
-        });
+    @Override
+    public void showTaskList(List<Task> taskList) {
+        taskListAdapter = new TaskListAdapter(taskList,getContext(),userFragmentSwitch);
+        recyclerViewTaskList.setAdapter(taskListAdapter);
 
     }
 }

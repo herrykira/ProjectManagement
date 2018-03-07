@@ -2,6 +2,7 @@ package com.example.tinku.projectmanagementsystem.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -9,8 +10,7 @@ import com.example.tinku.projectmanagementsystem.R;
 import com.example.tinku.projectmanagementsystem.adapter.UserPagerAdapter;
 import com.example.tinku.projectmanagementsystem.fragment.InboxFragment;
 import com.example.tinku.projectmanagementsystem.fragment.detail.DetailFragment;
-import com.example.tinku.projectmanagementsystem.fragment.taskDetail.TaskDetailFragment;
-import com.example.tinku.projectmanagementsystem.fragment.TaskListFragment;
+import com.example.tinku.projectmanagementsystem.fragment.taskList.TaskListFragment;
 import com.example.tinku.projectmanagementsystem.fragment.UserFragmentSwitch;
 
 
@@ -71,6 +71,8 @@ public class UserActivity extends AppCompatActivity implements UserFragmentSwitc
         Bundle bundle = new Bundle();
         bundle.putString("taskId",taskId);
         bundle.putString("productId",productId);
+        Log.i("beforeDetail",taskId);
+        Log.i("beforeDetail",productId);
         DetailFragment detailFragment = new DetailFragment();
         detailFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction()

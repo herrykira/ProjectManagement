@@ -22,11 +22,15 @@ public class DetailFragment extends Fragment implements DetailView,TabLayout.OnT
     TabLayout tabLayout;
     ViewPager viewPager;
     DetailPagerAdapter detailPagerAdapter;
+    String taskId;
+    String productId;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         detailPresenter = new DetailPresenterImpl(this);
+        taskId = getArguments().getString("taskId");
+        productId = getArguments().getString("productId");
     }
 
     @Nullable
@@ -49,10 +53,10 @@ public class DetailFragment extends Fragment implements DetailView,TabLayout.OnT
         tabLayout.addTab(tabLayout.newTab().setText("Sub Task"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        String taskId = getArguments().getString("taskId");
-        String productId = getArguments().getString("productId");
+//        String taskId = getArguments().getString("taskId");
+//        String productId = getArguments().getString("productId");
 
-        detailPagerAdapter = new DetailPagerAdapter(getChildFragmentManager(),2,taskId,productId);
+        detailPagerAdapter = new DetailPagerAdapter(getFragmentManager(),2,taskId,productId);
         viewPager.setAdapter(detailPagerAdapter);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

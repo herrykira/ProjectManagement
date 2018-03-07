@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.tinku.projectmanagementsystem.fragment.InboxFragment;
-import com.example.tinku.projectmanagementsystem.fragment.TaskListFragment;
+import com.example.tinku.projectmanagementsystem.fragment.taskList.TaskListFragment;
 
 
 /**

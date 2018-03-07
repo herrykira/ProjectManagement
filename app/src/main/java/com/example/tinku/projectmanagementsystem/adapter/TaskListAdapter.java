@@ -54,19 +54,19 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.TaskLi
         holder.textViewTaskId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userFragmentSwitch.switchToTaskDetail(taskId,projectId);
+                userFragmentSwitch.switchToDetail(taskId,projectId);
             }
         });
         holder.textViewProjectId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userFragmentSwitch.switchToTaskDetail(taskId,projectId);
+                userFragmentSwitch.switchToDetail(taskId,projectId);
             }
         });
         holder.textViewSubtaskId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userFragmentSwitch.switchToTaskDetail(taskId,projectId);
+                userFragmentSwitch.switchToDetail(taskId,projectId);
             }
         });
     }
