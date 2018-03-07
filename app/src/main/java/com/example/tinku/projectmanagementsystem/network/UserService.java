@@ -1,7 +1,10 @@
 package com.example.tinku.projectmanagementsystem.network;
 
 import com.example.tinku.projectmanagementsystem.model.DetailResponse;
+import com.example.tinku.projectmanagementsystem.model.EmployeeListResponse;
 import com.example.tinku.projectmanagementsystem.model.ForgotResponse;
+import com.example.tinku.projectmanagementsystem.model.ProjectsListResponse;
+import com.example.tinku.projectmanagementsystem.model.TaskListResponse;
 import com.example.tinku.projectmanagementsystem.model.TaskResponse;
 import com.example.tinku.projectmanagementsystem.model.UserInfo;
 
@@ -25,4 +28,14 @@ public interface UserService {
 
     @GET("pms_view_task_deatil.php")
     public Call<DetailResponse> getTaskDetail(@Query("taskid") String taskid, @Query("project_id") String productid);
+
+    @GET("pms_employee_list.php") //This is for Admin to get list of employees
+    public Call<EmployeeListResponse> getListOfEmployees();
+
+    @GET("pms_projects.php")  // This is For admin to get list of projects
+    public Call<ProjectsListResponse> getListOfProjects();
+
+    @GET("pms_project_task_list.php") //This is for admin to Get List of tasks
+    public Call<TaskListResponse> getListOfTasks();
+
 }

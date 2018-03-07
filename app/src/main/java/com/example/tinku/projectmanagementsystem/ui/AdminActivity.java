@@ -30,9 +30,7 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the four
+
         mSectionsPagerAdapter = new AdminActivity.SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
@@ -43,28 +41,6 @@ public class AdminActivity extends AppCompatActivity {
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
 
-//        tabLayout.addTab(tabLayout.newTab().setText("name"));
-
-
-//        tabLayout.addOnTabSelectedListener(this);
-
-//        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//                tabLayout.setScrollPosition(position,0,false);
-//                tabLayout.setSelected(true);
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
@@ -103,26 +79,7 @@ public class AdminActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    public void onTabSelected(Tab tab) {
-//        mViewPager.setCurrentItem(tab.getPosition());
-//    }
-//
-//    @Override
-//    public void onTabUnselected(Tab tab) {
-//
-//    }
-//
-//    @Override
-//    public void onTabReselected(Tab tab) {
-//
-//    }
 
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -160,23 +117,6 @@ public class AdminActivity extends AppCompatActivity {
             return 5;
         }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "James";
-                case 1:
-                    return "BOND";
-                case 2:
-                    return "MI";
-                case 3:
-                    return "6";
-                case 4:
-                    return "";
-                default:
-                    return null;
-            }
 
-        }
     }
 }

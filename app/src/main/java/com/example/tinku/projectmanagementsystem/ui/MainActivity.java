@@ -9,7 +9,8 @@ import android.widget.Button;
 import com.example.tinku.projectmanagementsystem.R;
 
 public class MainActivity extends AppCompatActivity {
-    Button buttonLoginPage;
+    Button buttonLoginPage, button_admin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +21,16 @@ public class MainActivity extends AppCompatActivity {
         buttonLoginPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,LoginActivity.class);
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(i);
+            }
+        });
+        button_admin = findViewById(R.id.button_admin);
+        button_admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AdminLoginActivity.class);
+                startActivity(intent);
             }
         });
     }
