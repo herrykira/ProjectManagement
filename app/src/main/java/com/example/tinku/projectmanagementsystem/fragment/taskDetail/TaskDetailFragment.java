@@ -1,5 +1,6 @@
-package com.example.tinku.projectmanagementsystem.fragment;
+package com.example.tinku.projectmanagementsystem.fragment.taskDetail;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,16 +24,30 @@ import retrofit2.Response;
  * Created by KinhangPoon on 4/3/2018.
  */
 
-public class TaskDetailFragment extends Fragment {
+public class TaskDetailFragment extends Fragment implements TaskDetailView {
     /**
      * declaration
      */
+    TaskDetailPresenter taskDetailPresenter;
     TextView textViewDetailTaskId,textViewDetailProjectId,textViewDetailTaskName;
     TextView textViewDetailTaskStatus,textViewDetailTaskDesc,textViewDetailStartDate,textViewDetailEndStart;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        taskDetailPresenter = new TaskDetailPresenterImpl(this);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.task_detail_fragment,container,false);
+        taskDetailPresenter.createView(view);
+        return view;
+    }
+
+    @Override
+    public void updateView(View view) {
         /**
          * initialization
          */
@@ -44,6 +59,7 @@ public class TaskDetailFragment extends Fragment {
         textViewDetailStartDate = view.findViewById(R.id.textView_detail_startdate);
         textViewDetailEndStart = view.findViewById(R.id.textView_detail_endstart);
 
+
         /**
          * get parameter from bundle
          */
@@ -54,34 +70,21 @@ public class TaskDetailFragment extends Fragment {
          * /**
          * use retrofit authenticate and interacte with APIs and sending network requests with OkHttp
          */
-        sendDetailRequest(taskId,productId);
-        return view;
-    }
-    public void sendDetailRequest(String taskId, String productId){
-        UserService userService = RetrofitInstance.getRetrofitInstance().create(UserService.class);
-        Call<DetailResponse> call = userService.getTaskDetail(taskId,productId);
-        call.enqueue(new Callback<DetailResponse>() {
-            @Override
-            public void onResponse(Call<DetailResponse> call, Response<DetailResponse> response) {
-                Log.i("DetailResponse",response.message());
-                /**
-                 * set contents for textView
-                 */
-                textViewDetailTaskId.setText("TaskId: "+response.body().getTaskid());
-                textViewDetailEndStart.setText("EndDate: "+response.body().getEndstart());
-                textViewDetailProjectId.setText("ProjectId: "+response.body().getProjectid());
-                textViewDetailStartDate.setText("StartDate: "+response.body().getStartdate());
-                textViewDetailTaskDesc.setText("Task Description: "+response.body().getTaskdesc());
-                textViewDetailTaskName.setText("Task Name: "+response.body().getTaskname());
-                String taskStatus = getStatus(response.body().getTaskstatus());
-                textViewDetailTaskStatus.setText("Task Status: "+taskStatus);
-            }
+        taskDetailPresenter.sendDetailRequest(taskId,productId);
 
-            @Override
-            public void onFailure(Call<DetailResponse> call, Throwable t) {
-                Log.e("DetailError",t.getMessage());
-            }
-        });
+
+    }
+
+    @Override
+    public void setText(Response<DetailResponse> response) {
+        textViewDetailTaskId.setText("TaskId: "+response.body().getTaskid());
+        textViewDetailEndStart.setText("EndDate: "+response.body().getEndstart());
+        textViewDetailProjectId.setText("ProjectId: "+response.body().getProjectid());
+        textViewDetailStartDate.setText("StartDate: "+response.body().getStartdate());
+        textViewDetailTaskDesc.setText("Task Description: "+response.body().getTaskdesc());
+        textViewDetailTaskName.setText("Task Name: "+response.body().getTaskname());
+        String taskStatus = getStatus(response.body().getTaskstatus());
+        textViewDetailTaskStatus.setText("Task Status: "+taskStatus);
     }
     public String getStatus(String s){
         switch (s){

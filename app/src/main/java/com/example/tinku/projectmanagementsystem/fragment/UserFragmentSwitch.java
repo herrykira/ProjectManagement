@@ -5,5 +5,5 @@ package com.example.tinku.projectmanagementsystem.fragment;
  */
 
 public interface UserFragmentSwitch {
-    public void switchToTaskDetail(String taksId, String productId);
+    public void switchToDetail(String taksId, String productId);
 }
