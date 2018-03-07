@@ -2,9 +2,9 @@ package com.example.tinku.projectmanagementsystem.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 
-public class AdminLoginActivity extends AppCompatActivity  implements View.OnClickListener{
+public class AdminLoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
 
@@ -46,7 +46,7 @@ public class AdminLoginActivity extends AppCompatActivity  implements View.OnCli
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
 
-        googleSIgnInButton.setOnClickListener( this);
+        googleSIgnInButton.setOnClickListener(this);
 
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
