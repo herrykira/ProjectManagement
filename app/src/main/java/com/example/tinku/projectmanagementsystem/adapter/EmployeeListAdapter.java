@@ -61,7 +61,7 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
 
         TextView employee_designation, employee_id, employee_firstname, employee_dateOfJoining, employee_lastname, employee_email, employee_mobile_number;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView) { // Thsi si
             super(itemView);
             employee_designation = itemView.findViewById(R.id.employee_designation);
             employee_id = itemView.findViewById(R.id.employee_id);
