@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relativelayout"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -9,6 +9,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Project Id :"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/projectId_spinner"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="18dp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -49,11 +73,13 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/projectId_spinner"
+            <EditText
+                android:id="@+id/projectStatus_et"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"></Spinner>
+                android:layout_margin="10dp">
+                
+            </EditText>
 
 
         </LinearLayout>
@@ -159,11 +185,11 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/create_project_button"
+            android:id="@+id/edit_project_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Create Project" />
+            android:text="Edit Project" />
 
     </LinearLayout>
 </ScrollView>
