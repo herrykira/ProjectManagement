@@ -9,6 +9,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.example.tinku.projectmanagementsystem.R;
 import com.example.tinku.projectmanagementsystem.adapter.UserPagerAdapter;
 import com.example.tinku.projectmanagementsystem.fragment.InboxFragment;
+import com.example.tinku.projectmanagementsystem.fragment.member.MemberFragment;
 import com.example.tinku.projectmanagementsystem.fragment.detail.DetailFragment;
 import com.example.tinku.projectmanagementsystem.fragment.taskList.TaskListFragment;
 import com.example.tinku.projectmanagementsystem.fragment.UserFragmentSwitch;
@@ -37,10 +38,12 @@ public class UserActivity extends AppCompatActivity implements UserFragmentSwitc
         /**
          * set up bottom navigation
          */
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem("Inbox",R.drawable.inbox);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem("MyTasks",R.drawable.task);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem("Inbox",R.drawable.inbox1);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem("MyTasks",R.drawable.task1);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem("Member",R.drawable.team);
         ahBottomNavigation.addItem(item1);
         ahBottomNavigation.addItem(item2);
+        ahBottomNavigation.addItem(item3);
 
         ahBottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
@@ -58,6 +61,11 @@ public class UserActivity extends AppCompatActivity implements UserFragmentSwitc
                                 .replace(R.id.user_main,new TaskListFragment())
                                 .commit();
                         break;
+                    case 2:
+                        getSupportFragmentManager().beginTransaction()
+                                .addToBackStack(null)
+                                .replace(R.id.user_main,new MemberFragment())
+                                .commit();
                 }
 //                if(!wasSelected) {
 //                    viewPager.setCurrentItem(position);

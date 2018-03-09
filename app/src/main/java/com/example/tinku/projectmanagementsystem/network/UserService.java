@@ -3,9 +3,14 @@ package com.example.tinku.projectmanagementsystem.network;
 import com.example.tinku.projectmanagementsystem.model.DetailResponse;
 import com.example.tinku.projectmanagementsystem.model.EmployeeListResponse;
 import com.example.tinku.projectmanagementsystem.model.ForgotResponse;
+import com.example.tinku.projectmanagementsystem.model.MemberDetailResponse;
+import com.example.tinku.projectmanagementsystem.model.MemberTaskResponse;
 import com.example.tinku.projectmanagementsystem.model.ProjectsListResponse;
+import com.example.tinku.projectmanagementsystem.model.SubTaskDetailResponse;
+import com.example.tinku.projectmanagementsystem.model.SubTaskListResponse;
 import com.example.tinku.projectmanagementsystem.model.TaskListResponse;
 import com.example.tinku.projectmanagementsystem.model.TaskResponse;
+import com.example.tinku.projectmanagementsystem.model.TaskResponsePOJO;
 import com.example.tinku.projectmanagementsystem.model.UserInfo;
 
 import retrofit2.Call;
@@ -38,4 +43,15 @@ public interface UserService {
     @GET("pms_project_task_list.php") //This is for admin to Get List of tasks
     public Call<TaskListResponse> getListOfTasks();
 
+    @GET("pms_view_subtask.php")
+    public Call<SubTaskListResponse> getSubTaskList(@Query("user_id") String user_id, @Query("taskid") String taskid);
+
+    @GET("pms_view_sub_task_deatil.php")
+    public Call<SubTaskDetailResponse> getSubTaskDetail(@Query("taskid") String taskid, @Query("subtask_id") String subtask_id, @Query("project_id") String project_id);
+
+    @GET("pms_team_task.php")
+    public Call<MemberTaskResponse> getTaskMember(@Query("taskid") String taskid,@Query("projectid") String projectid);
+
+    @GET("pms_team_member_deatil.php")
+    public Call<MemberDetailResponse> getMemberDetail(@Query("memberuserid") String userid);
 }
