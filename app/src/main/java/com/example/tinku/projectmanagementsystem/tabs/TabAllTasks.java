@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tinku.projectmanagementsystem.R;
-
 import com.example.tinku.projectmanagementsystem.model.TaskListResponse;
 import com.example.tinku.projectmanagementsystem.network.RetrofitInstance;
 import com.example.tinku.projectmanagementsystem.network.UserService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +24,8 @@ import retrofit2.Response;
  */
 
 public class TabAllTasks extends Fragment {
+
+    static public List<String> idOfTasks = new ArrayList<>();
 
     public TabAllTasks() {
     }
@@ -36,7 +40,11 @@ public class TabAllTasks extends Fragment {
         call.enqueue(new Callback<TaskListResponse>() {
             @Override
             public void onResponse(Call<TaskListResponse> call, Response<TaskListResponse> response) {
-                Log.e("Task List is ", response.body().toString());
+                for (int i = 0; i < response.body().getProjectTask().size(); i++) {
+
+                    idOfTasks.add(response.body().getProjectTask().get(i).getTaskid());
+                }
+                Log.e("ID OF TASKS", "" + idOfTasks);
             }
 
             @Override

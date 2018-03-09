@@ -35,12 +35,15 @@ import retrofit2.Response;
  */
 
 public class TaskListFragment extends Fragment implements TaskListView {
+
+
     TextView textViewTaskList;
     RecyclerView recyclerViewTaskList;
     UserFragmentSwitch userFragmentSwitch;
     TaskListAdapter taskListAdapter;
     SharedPreferences sharedPreferences;
     TaskListPresenter taskListPresenter;
+
 
     @Override
     public void onAttach(Context context) {

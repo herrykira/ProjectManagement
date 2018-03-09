@@ -15,6 +15,9 @@ import com.example.tinku.projectmanagementsystem.model.EmployeeListResponse;
 import com.example.tinku.projectmanagementsystem.network.RetrofitInstance;
 import com.example.tinku.projectmanagementsystem.network.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,11 +27,10 @@ import retrofit2.Response;
  */
 
 public class TabEmployeeList extends Fragment {
+    public static List<String> list;
     EmployeeListAdapter adapter;
     RecyclerView recyclerView_employeelist;
 
-
-//    List<EmployeeListResponse> employeeArrayList;
 
     public TabEmployeeList() {
     }
@@ -37,13 +39,18 @@ public class TabEmployeeList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.tab_employee_list, container, false);
+        list = new ArrayList<>();
         UserService userService = RetrofitInstance.getRetrofitInstance().create(UserService.class);
         Call<EmployeeListResponse> call = userService.getListOfEmployees();
         call.enqueue(new Callback<EmployeeListResponse>() {
             @Override
             public void onResponse(Call<EmployeeListResponse> call, Response<EmployeeListResponse> response) {
-                Log.e("Employee list is", response.body().getEmployees().size()+"");
-//                employeeArrayList = new ArrayList<>();
+                Log.e("Employee list is", response.body().getEmployees().size() + "");
+
+                for (int i = 0; i < response.body().getEmployees().size(); i++) {
+
+                    list.add(response.body().getEmployees().get(i).getEmpid());
+                }
                 adapter = new EmployeeListAdapter(response.body().getEmployees(), getContext());
                 recyclerView_employeelist = rootView.findViewById(R.id.recyclerView_employeelist);
                 recyclerView_employeelist.setLayoutManager(new LinearLayoutManager(getContext()));

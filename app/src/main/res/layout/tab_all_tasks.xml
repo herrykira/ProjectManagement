@@ -7,10 +7,7 @@
     android:background="#888000"
     tools:context=".ui.AdminActivity">
 
-    <TextView
-        android:text="THIS IS ALL TASKS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 
 </LinearLayout>
 

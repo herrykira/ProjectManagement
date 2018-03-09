@@ -22,7 +22,11 @@
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.UserActivity" />
         <activity android:name=".ui.AdminLoginActivity" />
-        <activity android:name=".ui.AdminActivity"></activity>
+        <activity android:name=".ui.AdminActivity" />
+        <activity android:name=".fragment.fragmentsforfab.ActivityForFloatingActionBar" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="0dbe0d6a7a7b06ee132b731786f597b8400ebc99" />
     </application>
 
 </manifest>
