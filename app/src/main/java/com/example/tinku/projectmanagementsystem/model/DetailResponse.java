@@ -1,76 +1,99 @@
 package com.example.tinku.projectmanagementsystem.model;
 
-/**
- * Created by KinhangPoon on 5/3/2018.
- */
 
-public class DetailResponse {
-    String taskid,projectid,taskname,taskstatus,taskdesc,startdate,endstart;
+import com.google.gson.annotations.SerializedName;
 
-    public DetailResponse(String taskid, String projectid, String taskname, String taskstatus, String taskdesc, String startdate, String endstart) {
-        this.taskid = taskid;
-        this.projectid = projectid;
-        this.taskname = taskname;
-        this.taskstatus = taskstatus;
-        this.taskdesc = taskdesc;
-        this.startdate = startdate;
-        this.endstart = endstart;
-    }
 
-    public String getTaskid() {
-        return taskid;
-    }
+public class DetailResponse{
 
-    public void setTaskid(String taskid) {
-        this.taskid = taskid;
-    }
+	@SerializedName("taskstatus")
+	private String taskstatus;
 
-    public String getProjectid() {
-        return projectid;
-    }
+	@SerializedName("taskdesc")
+	private String taskdesc;
 
-    public void setProjectid(String projectid) {
-        this.projectid = projectid;
-    }
+	@SerializedName("endstart")
+	private String endstart;
 
-    public String getTaskname() {
-        return taskname;
-    }
+	@SerializedName("taskname")
+	private String taskname;
 
-    public void setTaskname(String taskname) {
-        this.taskname = taskname;
-    }
+	@SerializedName("startdate")
+	private String startdate;
 
-    public String getTaskstatus() {
-        return taskstatus;
-    }
+	@SerializedName("projectid")
+	private String projectid;
 
-    public void setTaskstatus(String taskstatus) {
-        this.taskstatus = taskstatus;
-    }
+	@SerializedName("taskid")
+	private String taskid;
 
-    public String getTaskdesc() {
-        return taskdesc;
-    }
+	public void setTaskstatus(String taskstatus){
+		this.taskstatus = taskstatus;
+	}
 
-    public void setTaskdesc(String taskdesc) {
-        this.taskdesc = taskdesc;
-    }
+	public String getTaskstatus(){
+		return taskstatus;
+	}
 
-    public String getStartdate() {
-        return startdate;
-    }
+	public void setTaskdesc(String taskdesc){
+		this.taskdesc = taskdesc;
+	}
 
-    public void setStartdate(String startdate) {
-        this.startdate = startdate;
-    }
+	public String getTaskdesc(){
+		return taskdesc;
+	}
 
-    public String getEndstart() {
-        return endstart;
-    }
+	public void setEndstart(String endstart){
+		this.endstart = endstart;
+	}
 
-    public void setEndstart(String endstart) {
-        this.endstart = endstart;
-    }
+	public String getEndstart(){
+		return endstart;
+	}
+
+	public void setTaskname(String taskname){
+		this.taskname = taskname;
+	}
+
+	public String getTaskname(){
+		return taskname;
+	}
+
+	public void setStartdate(String startdate){
+		this.startdate = startdate;
+	}
+
+	public String getStartdate(){
+		return startdate;
+	}
+
+	public void setProjectid(String projectid){
+		this.projectid = projectid;
+	}
+
+	public String getProjectid(){
+		return projectid;
+	}
+
+	public void setTaskid(String taskid){
+		this.taskid = taskid;
+	}
+
+	public String getTaskid(){
+		return taskid;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"DetailResponse{" + 
+			"taskstatus = '" + taskstatus + '\'' + 
+			",taskdesc = '" + taskdesc + '\'' + 
+			",endstart = '" + endstart + '\'' + 
+			",taskname = '" + taskname + '\'' + 
+			",startdate = '" + startdate + '\'' + 
+			",projectid = '" + projectid + '\'' + 
+			",taskid = '" + taskid + '\'' + 
+			"}";
+		}
 }
-
