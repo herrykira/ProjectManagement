@@ -11,14 +11,22 @@
 
         <TextView
             android:id="@+id/textView_member"
+            android:textSize="20dp"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Members" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView_member"
+        <ExpandableListView
+            android:id="@+id/expandableListview_member"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/recyclerView_member"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
