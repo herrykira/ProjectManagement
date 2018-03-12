@@ -37,7 +37,7 @@ public class TaskListFragment extends Fragment implements TaskListView {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        userFragmentSwitch = (UserFragmentSwitch) getActivity();
+      //  userFragmentSwitch = (UserFragmentSwitch) getActivity();
         sharedPreferences = context.getSharedPreferences("myinfo",Context.MODE_PRIVATE);
         taskListPresenter = new TaskListPresenterImpl(this);
     }

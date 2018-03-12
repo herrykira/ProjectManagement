@@ -41,9 +41,9 @@ public class MemberPresenterImpl implements MemberPresenter {
 
     @Override
     public void sendMemberRequest(SharedPreferences sharedPreferences) {
-        String userId = sharedPreferences.getString("UserId","");
-        Log.i("MemberlistUserId",userId);
-        if(userId.equals("")){
+        String userId = sharedPreferences.getString("UserId", "");
+        Log.i("MemberlistUserId", userId);
+        if (userId.equals("")) {
             return;
         }
         UserService userService = RetrofitInstance.getRetrofitInstance().create(UserService.class);
@@ -51,14 +51,14 @@ public class MemberPresenterImpl implements MemberPresenter {
         call.enqueue(new Callback<TaskResponse>() {
             @Override
             public void onResponse(Call<TaskResponse> call, Response<TaskResponse> response) {
-                Log.i("MemberListResponse",response.raw().toString());
+                Log.i("MemberListResponse", response.raw().toString());
                 List<Task> taskList = response.body().getTasksview();
-                for(int i=0;i<taskList.size();i++){
+                for (int i = 0; i < taskList.size(); i++) {
                     String projectid = taskList.get(i).getProjectid();
                     String taskid = taskList.get(i).getTaskid();
                     String subtaskid = taskList.get(i).getSubtaskid();
 
-                    requestMemberList(taskid,projectid);
+                    requestMemberList(taskid, projectid);
 
                 }
             }
@@ -77,13 +77,13 @@ public class MemberPresenterImpl implements MemberPresenter {
         call.enqueue(new Callback<MemberDetailResponse>() {
             @Override
             public void onResponse(Call<MemberDetailResponse> call, Response<MemberDetailResponse> response) {
-                Log.i("MemberDetailList",response.body().toString());
+                Log.i("MemberDetailList", response.body().toString());
                 String firstName = response.body().getUserfirstname();
                 String lastName = response.body().getUserlastname();
                 String email = response.body().getUseremail();
                 String mobile = response.body().getUsermobile();
 
-                memberView.createDialog(firstName,lastName,email,mobile);
+                memberView.createDialog(firstName, lastName, email, mobile);
             }
 
             @Override
@@ -93,23 +93,25 @@ public class MemberPresenterImpl implements MemberPresenter {
         });
     }
 
-    public void requestMemberList(String taskid,String projectid){
-        final Map<String,List<String>> map = new HashMap<>();
+    public void requestMemberList(String taskid, String projectid) {
+        final Map<String, List<String>> map = new HashMap<>();
         UserService userService = RetrofitInstance.getRetrofitInstance().create(UserService.class);
-        Call<MemberTaskResponse> call = userService.getTaskMember(taskid,projectid);
+        Call<MemberTaskResponse> call = userService.getTaskMember(taskid, projectid);
         call.enqueue(new Callback<MemberTaskResponse>() {
             @Override
             public void onResponse(Call<MemberTaskResponse> call, Response<MemberTaskResponse> response) {
-                Log.i("MemberTaskResponse",response.body().toString());
+                Log.i("MemberTaskResponse", response.body().toString());
+                if (response.body().toString().contains("null"))
+                    return;
                 List<MembersItem> members = response.body().getMembers();
                 List<String> userIds = new ArrayList<>();
-                for(int i=0;i<members.size();i++){
+                for (int i = 0; i < members.size(); i++) {
                     String userId = members.get(i).getUserid();
                     String taskId = members.get(i).getTaskid();
                     String projectId = members.get(i).getProjectid();
 
                     userIds.add(userId);
-                    getTaskTitles(map,taskId,projectId,userId,i,members.size()-1);
+                    getTaskTitles(map, taskId, projectId, userId, i, members.size() - 1);
 
                 }
             }
@@ -122,28 +124,28 @@ public class MemberPresenterImpl implements MemberPresenter {
 
     }
 
-    public void getTaskTitles(final Map<String,List<String>> map, final String taskId, String projectId, final String userId, final int i, final int size){
+    public void getTaskTitles(final Map<String, List<String>> map, final String taskId, String projectId, final String userId, final int i, final int size) {
         UserService userService = RetrofitInstance.getRetrofitInstance().create(UserService.class);
-        Call<DetailResponse> call = userService.getTaskDetail(taskId,projectId);
+        Call<DetailResponse> call = userService.getTaskDetail(taskId, projectId);
         call.enqueue(new Callback<DetailResponse>() {
             @Override
             public void onResponse(Call<DetailResponse> call, Response<DetailResponse> response) {
-                if(response.body().toString().contains("null")){
+                if (response.body().toString().contains("null")) {
                     return;
                 }
-                Log.i("taskTitles",response.body().getTaskname());
+                Log.i("taskTitles", response.body().getTaskname());
                 String taskname = response.body().getTaskname();
-                if(!titles.contains(taskname)){
+                if (!titles.contains(taskname)) {
                     titles.add(taskname);
                 }
-                if(!map.containsKey(taskname)){
+                if (!map.containsKey(taskname)) {
                     map.put(taskname, new ArrayList<String>());
                 }
                 map.get(taskname).add(userId);
-                Log.i("member",map.size()+"");
-                Log.i("memberid",map.get(taskname).size()+"");
-                if(i == size){
-                    memberView.updateListView(titles,map);
+                Log.i("member", map.size() + "");
+                Log.i("memberid", map.get(taskname).size() + "");
+                if (i == size) {
+                    memberView.updateListView(titles, map);
                 }
             }
 

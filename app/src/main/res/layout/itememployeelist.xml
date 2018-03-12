@@ -2,42 +2,73 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/employee_designation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewOfItemEmployeelist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#F3E5F5"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="@dimen/cardview_default_elevation"
+        app:cardMaxElevation="@dimen/cardview_default_elevation"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/employee_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/employee_firstname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/employee_dateOfJoining"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/employee_designation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#AA00FF" />
 
-    <TextView
-        android:id="@+id/employee_lastname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/employee_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#EA80FC" />
 
-    <TextView
-        android:id="@+id/employee_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/employee_firstname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff0000" />
 
-    <TextView
-        android:id="@+id/employee_mobile_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/employee_lastname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff0000" />
+
+            <TextView
+                android:id="@+id/employee_dateOfJoining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#D500F9" />
+
+            <TextView
+                android:id="@+id/employee_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#EA80FC" />
+
+            <TextView
+                android:id="@+id/employee_mobile_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#EA80FC" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

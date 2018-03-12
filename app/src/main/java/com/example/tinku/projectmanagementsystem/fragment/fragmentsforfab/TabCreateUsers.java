@@ -43,26 +43,33 @@ public class TabCreateUsers extends Fragment {
         create_user_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String first_name = first_name_et.getText().toString();
                 String last_name = lastName_et.getText().toString();
                 String email = email_et.getText().toString();
                 String password = password_et.getText().toString();
                 String mobile = mobile_et.getText().toString();
                 String role = role_et.getText().toString();
-                final String URL = "http://rjtmobile.com/aamir/pms/android-app/pms_reg.php?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email + "&mobile=" + mobile + "&password=" + password + "&company_size=500&your_role=" + role + "";
-                RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(getContext(), "" + response.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getContext(), "Network busy", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                requestQueue.add(stringRequest);
+                if (first_name.length() <= 0 && last_name.length() <= 0 && email.length() <= 0 && password.length() <= 0 && mobile.length() <= 0 && role.length() <= 0) {
+                    Toast.makeText(getContext(), "All Fealds are mandatory", Toast.LENGTH_SHORT).show();
+                } else {
+                    final String URL = "http://rjtmobile.com/aamir/pms/android-app/pms_reg.php?first_name=" + first_name + "&last_name=" + last_name + "&email=" + email + "&mobile=" + mobile + "&password=" + password + "&company_size=500&your_role=" + role + "";
+                    RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Toast.makeText(getContext(), "" + response.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getContext(), "Network busy", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    requestQueue.add(stringRequest);
+                }
+
+
             }
         });
         return rootView;

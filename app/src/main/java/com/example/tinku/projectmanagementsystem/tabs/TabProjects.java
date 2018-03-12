@@ -2,6 +2,7 @@ package com.example.tinku.projectmanagementsystem.tabs;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -62,7 +63,8 @@ public class TabProjects extends Fragment {
                 adapter = new ProjectListAdapter(getContext(), response.body().getProjects());
 
                 recyclerView_projectlist = rootView.findViewById(R.id.recyclerView_projectList);
-                recyclerView_projectlist.setLayoutManager(new LinearLayoutManager(getContext()));
+                recyclerView_projectlist.setLayoutManager(new GridLayoutManager(getContext(),2));
+                recyclerView_projectlist.setHasFixedSize(true);
                 recyclerView_projectlist.setAdapter(adapter);
 
             }

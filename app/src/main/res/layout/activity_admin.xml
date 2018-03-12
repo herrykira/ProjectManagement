@@ -1,73 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.example.tinku.projectmanagementsystem.ui.AdminActivity">
+    android:background="#fff">
 
     <LinearLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/container_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/admin_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="2dp"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:orientation="vertical">
 
-
-        <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="?attr/actionBarSize"-->
-        <!--android:layout_weight="1"-->
-        <!--android:background="?attr/colorPrimary"-->
-        <!--app:layout_scrollFlags="scroll|enterAlways"-->
-        <!--app:popupTheme="@style/AppTheme.PopupOverlay"-->
-        <!--app:title="@string/app_name">-->
-
-        <!--</android.support.v7.widget.Toolbar>-->
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
+        <com.example.tinku.projectmanagementsystem.model.NoSwipePager
+            android:id="@+id/container_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"></com.example.tinku.projectmanagementsystem.model.NoSwipePager>
 
 
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_text_1" />
+    </LinearLayout>
 
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabItem2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_text_2" />
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BA68C8">
 
-            <android.support.design.widget.TabItem
-                android:id="@+id/tabItem3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_text_3" />
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_text_1" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabItem2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_text_2" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabItem3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_text_3" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabItem4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_text_4" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tabItem5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tab_text_5" />
 
 
-        </android.support.design.widget.TabLayout>
-    </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.TabLayout>
 
+
+    <!--<android.support.v4.view.ViewPager-->
+    <!--android:id="@+id/container"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -76,6 +74,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
+        android:theme="@style/Theme.Design.Light.BottomSheetDialog"
         app:srcCompat="@drawable/plus_fab" />
 
 
@@ -97,7 +96,8 @@
         android:layout_marginBottom="86dp"
         android:layout_marginRight="66dp"
         android:text="Create Project"
-        android:textStyle="italic"
+        android:textColor="#BA68C8"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
     <android.support.design.widget.FloatingActionButton
@@ -118,7 +118,8 @@
         android:layout_marginBottom="136dp"
         android:layout_marginRight="66dp"
         android:text="Create Task"
-        android:textStyle="italic"
+        android:textColor="#BA68C8"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
     <android.support.design.widget.FloatingActionButton
@@ -140,7 +141,8 @@
         android:layout_marginBottom="186dp"
         android:layout_marginRight="66dp"
         android:text="Create SubTask"
-        android:textStyle="italic"
+        android:textColor="#BA68C8"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
     <android.support.design.widget.FloatingActionButton
@@ -161,7 +163,8 @@
         android:layout_marginBottom="236dp"
         android:layout_marginRight="66dp"
         android:text="Create Team"
-        android:textStyle="italic"
+        android:textColor="#BA68C8"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
     <android.support.design.widget.FloatingActionButton
@@ -183,7 +186,8 @@
         android:layout_marginBottom="286dp"
         android:layout_marginRight="66dp"
         android:text="Edit Projects"
-        android:textStyle="italic"
+        android:textColor="#BA68C8"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
     <android.support.design.widget.FloatingActionButton
@@ -205,7 +209,8 @@
         android:layout_marginBottom="336dp"
         android:layout_marginRight="66dp"
         android:text="Create User"
-        android:textStyle="italic"
+        android:textColor="#BA68C8"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
     <android.support.design.widget.FloatingActionButton
@@ -227,7 +232,8 @@
         android:layout_marginBottom="386dp"
         android:layout_marginRight="66dp"
         android:text="Assign Task To Member"
-        android:textStyle="italic"
+        android:textColor="#BA68C8"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
     <android.support.design.widget.FloatingActionButton
@@ -237,7 +243,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="416dp"
         android:layout_marginRight="16dp"
-        android:src="@drawable/assign_subtask_teammember"
+        android:src="@drawable/assign_task_to_member"
         android:textStyle="italic"
         android:visibility="invisible" />
 
@@ -249,8 +255,14 @@
         android:layout_marginBottom="436dp"
         android:layout_marginRight="66dp"
         android:text="Assign SubTask To Member"
-        android:textStyle="italic"
+        android:textColor="#BA68C8"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
+    <!--<com.aurelhubert.ahbottomnavigation.AHBottomNavigation-->
+    <!--android:id="@+id/bottom_navigation_admin"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="bottom"/>-->
 
 </android.support.design.widget.CoordinatorLayout>

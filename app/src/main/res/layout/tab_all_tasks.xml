@@ -4,10 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#888000"
     tools:context=".ui.AdminActivity">
 
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/recycler_view_of_all_tasks"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+</android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
 
