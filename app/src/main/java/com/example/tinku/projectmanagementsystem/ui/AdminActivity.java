@@ -15,10 +15,11 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.tinku.projectmanagementsystem.R;
 import com.example.tinku.projectmanagementsystem.fragment.fragmentsforfab.ActivityForFloatingActionBar;
+import com.example.tinku.projectmanagementsystem.fragment.member.MemberFragment;
+import com.example.tinku.projectmanagementsystem.fragment.taskList.TaskListFragment;
 import com.example.tinku.projectmanagementsystem.tabs.TabAllTasks;
 import com.example.tinku.projectmanagementsystem.tabs.TabEmployeeList;
 import com.example.tinku.projectmanagementsystem.tabs.TabProjects;
@@ -40,12 +41,13 @@ public class AdminActivity extends AppCompatActivity {
 
         mSectionsPagerAdapter = new AdminActivity.SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
+        //        Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container_viewpager);
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
+
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
@@ -204,7 +206,7 @@ public class AdminActivity extends AppCompatActivity {
         assign_task_member.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(AdminActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+
                 Intent i = new Intent(AdminActivity.this, ActivityForFloatingActionBar.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("data", 7);
@@ -215,7 +217,6 @@ public class AdminActivity extends AppCompatActivity {
         assign_subtask_member.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(AdminActivity.this, "clicked", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(AdminActivity.this, ActivityForFloatingActionBar.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("data", 8);
@@ -249,11 +250,11 @@ public class AdminActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onResume() {
-        tabLayout.setVisibility(View.VISIBLE);
-        super.onResume();
-    }
+//    @Override
+//    protected void onResume() {
+//        tabLayout.setVisibility(View.VISIBLE);
+//        super.onResume();
+//    }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -275,6 +276,14 @@ public class AdminActivity extends AppCompatActivity {
                 case 2:
                     TabAllTasks allTasks = new TabAllTasks();
                     return allTasks;
+                case 3:
+
+                    TaskListFragment taskListFragment = new TaskListFragment();
+                    return taskListFragment;
+
+                case 4:
+                    MemberFragment memberFragment = new MemberFragment();
+                    return memberFragment;
                 default:
                     return null;
             }
@@ -282,8 +291,8 @@ public class AdminActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            // Show 5 total pages.
+            return 5;
         }
 
     }

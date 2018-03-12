@@ -59,7 +59,6 @@ public class CreateSubTask extends Fragment {
         project_id_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                 selectedProjectId = adapterView.getItemAtPosition(i).toString();
             }
 
@@ -99,26 +98,34 @@ public class CreateSubTask extends Fragment {
         create_subtask_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String subtaskId = subtask_id_et.getText().toString();
+                String taskId = subtask_id_et.getText().toString();
+                try {
+                    int taskid = Integer.parseInt(taskId);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getContext(), "Task Id should be integer", Toast.LENGTH_SHORT).show();
+                }
                 String subTaskName = sub_task_name_et.getText().toString();
                 String subtaskStatus = subtaskStatus_et.getText().toString();
                 String subTaskDescription = subtaskdescription_et.getText().toString();
                 String subTaskStartDate = subtaskstartDate_et.getText().toString();
                 String subTaskEndDate = subaskendDate_et.getText().toString();
+                if (subTaskDescription.length() <= 10 && subTaskName.length() <= 0 && subtaskStatus.length() <= 0 && subTaskEndDate.length() <= 0 && subTaskStartDate.length() <= 0) {
+                    Toast.makeText(getContext(), "Oops Something went wrong please try again", Toast.LENGTH_SHORT).show();
+                } else {
+                    UserService service = RetrofitInstance.getRetrofitInstance().create(UserService.class);
+                    Call<CreateSubTaskResponse> call = service.getCreateSubTaskResponse(selectedProjectId, taskId, subTaskName, subtaskStatus, subTaskDescription, subTaskStartDate, subTaskEndDate);
+                    call.enqueue(new Callback<CreateSubTaskResponse>() {
+                        @Override
+                        public void onResponse(Call<CreateSubTaskResponse> call, Response<CreateSubTaskResponse> response) {
+                            Toast.makeText(getContext(), "" + response.body().toString(), Toast.LENGTH_SHORT).show();
+                        }
 
-                UserService service = RetrofitInstance.getRetrofitInstance().create(UserService.class);
-                Call<CreateSubTaskResponse> call = service.getCreateSubTaskResponse(selectedProjectId, subtaskId, subTaskName, subtaskStatus, subTaskDescription, subTaskStartDate, subTaskEndDate);
-                call.enqueue(new Callback<CreateSubTaskResponse>() {
-                    @Override
-                    public void onResponse(Call<CreateSubTaskResponse> call, Response<CreateSubTaskResponse> response) {
-                        Toast.makeText(getContext(), "" + response.body().toString(), Toast.LENGTH_SHORT).show();
-                    }
+                        @Override
+                        public void onFailure(Call<CreateSubTaskResponse> call, Throwable t) {
 
-                    @Override
-                    public void onFailure(Call<CreateSubTaskResponse> call, Throwable t) {
-
-                    }
-                });
+                        }
+                    });
+                }
             }
         });
 

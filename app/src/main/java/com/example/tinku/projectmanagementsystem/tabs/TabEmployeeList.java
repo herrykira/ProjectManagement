@@ -54,6 +54,7 @@ public class TabEmployeeList extends Fragment {
                 adapter = new EmployeeListAdapter(response.body().getEmployees(), getContext());
                 recyclerView_employeelist = rootView.findViewById(R.id.recyclerView_employeelist);
                 recyclerView_employeelist.setLayoutManager(new LinearLayoutManager(getContext()));
+                recyclerView_employeelist.setHasFixedSize(true);
                 recyclerView_employeelist.setAdapter(adapter);
             }
 

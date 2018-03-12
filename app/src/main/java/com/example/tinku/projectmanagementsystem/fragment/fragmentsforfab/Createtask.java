@@ -84,19 +84,24 @@ public class Createtask extends Fragment {
                 String taskDescription = Taskdescription_et.getText().toString();
                 String taskStartDate = TaskstartDate_et.getText().toString();
                 String taskEndDate = TaskendDate_et.getText().toString();
-                UserService service = RetrofitInstance.getRetrofitInstance().create(UserService.class);
-                Call<CreateTaskResponse> call = service.getCreateTaskResponse(project_id, taskName, taskStatus, taskDescription, taskStartDate, taskEndDate);
-                call.enqueue(new Callback<CreateTaskResponse>() {
-                    @Override
-                    public void onResponse(Call<CreateTaskResponse> call, Response<CreateTaskResponse> response) {
-                        Toast.makeText(getContext(), "response to create task"+response.body().toString(), Toast.LENGTH_SHORT).show();
-                    }
+                if (taskName.length() <= 0 && taskStatus.length() <= 0 && taskDescription.length() <= 0 && taskStartDate.length() <= 0 && taskEndDate.length() <= 0) {
+                    Toast.makeText(getContext(), "All fealds are mandatory", Toast.LENGTH_SHORT).show();
+                } else {
+                    UserService service = RetrofitInstance.getRetrofitInstance().create(UserService.class);
+                    Call<CreateTaskResponse> call = service.getCreateTaskResponse(project_id, taskName, taskStatus, taskDescription, taskStartDate, taskEndDate);
+                    call.enqueue(new Callback<CreateTaskResponse>() {
+                        @Override
+                        public void onResponse(Call<CreateTaskResponse> call, Response<CreateTaskResponse> response) {
+                            Toast.makeText(getContext(), "response to create task" + response.body().toString(), Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void onFailure(Call<CreateTaskResponse> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<CreateTaskResponse> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
+                }
+
             }
         });
 

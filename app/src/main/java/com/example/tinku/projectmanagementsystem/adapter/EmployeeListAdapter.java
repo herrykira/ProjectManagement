@@ -1,6 +1,7 @@
 package com.example.tinku.projectmanagementsystem.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +43,12 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
         String email = employeesItem.getEmpemail();
         String mobilenumber = employeesItem.getEmpmobile();
         String dateOfJoining = employeesItem.getDateofjoining();
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         holder.employee_dateOfJoining.setText(dateOfJoining.toString());
         holder.employee_designation.setText(designation.toString());
         holder.employee_email.setText(email.toString());
@@ -60,9 +67,11 @@ public class EmployeeListAdapter extends RecyclerView.Adapter<EmployeeListAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView employee_designation, employee_id, employee_firstname, employee_dateOfJoining, employee_lastname, employee_email, employee_mobile_number;
+        CardView cardView;
 
         public ViewHolder(View itemView) { // This is
             super(itemView);
+            cardView = itemView.findViewById(R.id.cardViewOfItemEmployeelist);
             employee_designation = itemView.findViewById(R.id.employee_designation);
             employee_id = itemView.findViewById(R.id.employee_id);
             employee_firstname = itemView.findViewById(R.id.employee_firstname);

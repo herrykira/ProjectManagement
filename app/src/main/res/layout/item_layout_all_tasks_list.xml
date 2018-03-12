@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    tools:layout_editor_absoluteY="81dp">
+
+    <!--TaskName_tv_tasklist-->
+    <!--taskID_tasklist-->
+    <!--projectID_TaskList-->
+    <!--task_status_tasklist-->
+    <!--task_description_tasklist-->
+    <!--startdate_tasklist-->
+    <!--end_date_tasklist-->
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewOfTasList"
+        app:cardBackgroundColor="#F3E5F5"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="@dimen/cardview_default_elevation"
+        app:cardMaxElevation="@dimen/cardview_default_elevation"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        android:layout_margin="10dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/TaskName_tv_tasklist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="this is the name od task"
+                android:textAlignment="center"
+                android:textColor="#AA00FF" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/projectID_TaskList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="this is the the Id of project"
+                    android:textAlignment="center"
+                    android:textColor="#EA80FC" />
+
+                <TextView
+                    android:id="@+id/taskID_tasklist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="this is the id of task"
+                    android:textAlignment="center"
+                    android:textColor="#EA80FC" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/task_status_tasklist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is the task status"
+                android:textAlignment="center"
+                android:textColor="#ff0000" />
+
+            <TextView
+                android:id="@+id/task_description_tasklist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is the task description"
+                android:textAlignment="center"
+                android:textColor="#EA80FC" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/startdate_tasklist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Here Date Appears"
+                    android:textAlignment="center"
+                    android:textColor="#D500F9" />
+
+                <TextView
+                    android:id="@+id/end_date_tasklist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Here Date Appears"
+                    android:textAlignment="center"
+                    android:textColor="#D500F9" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

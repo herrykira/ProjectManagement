@@ -7,6 +7,8 @@
     <string name="tab_text_1">PROJECTS LIST</string>
     <string name="tab_text_2">EMPLOYEE LIST</string>
     <string name="tab_text_3">ALL TASKS</string>
+   <string name="tab_text_4">NEW TASK LIST</string>
+    <string name="tab_text_5">NEW MEMBER</string>
 
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>

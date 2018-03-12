@@ -85,19 +85,24 @@ public class TabCreateProjects extends Fragment {
                 String description = description_et.getText().toString();
                 String startDate = startDate_et.getText().toString();
                 String endDate = endDate_et.getText().toString();
-                UserService service = RetrofitInstance.getRetrofitInstance().create(UserService.class);
-                Call<CreateProjectResponse> call = service.getCreateProjectResponse(projectName, status, description, startDate, endDate);
-                call.enqueue(new Callback<CreateProjectResponse>() {
-                    @Override
-                    public void onResponse(Call<CreateProjectResponse> call, Response<CreateProjectResponse> response) {
-                        Toast.makeText(getContext(), "" + response.body().toString(), Toast.LENGTH_SHORT).show();
-                    }
+                if (projectName.length() <= 0 && description.length() <= 0 && startDate.length() <= 0 && endDate.length() <= 0) {
+                    Toast.makeText(getContext(), "All Fealds are mandatory", Toast.LENGTH_SHORT).show();
+                } else {
+                    UserService service = RetrofitInstance.getRetrofitInstance().create(UserService.class);
+                    Call<CreateProjectResponse> call = service.getCreateProjectResponse(projectName, status, description, startDate, endDate);
+                    call.enqueue(new Callback<CreateProjectResponse>() {
+                        @Override
+                        public void onResponse(Call<CreateProjectResponse> call, Response<CreateProjectResponse> response) {
+                            Toast.makeText(getContext(), "" + response.body().toString(), Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void onFailure(Call<CreateProjectResponse> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<CreateProjectResponse> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
+                }
+
             }
         });
 

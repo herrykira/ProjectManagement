@@ -1,39 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewOfProjectsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="#F3E5F5"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="@dimen/cardview_default_elevation"
+        app:cardMaxElevation="@dimen/cardview_default_elevation"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/project_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/project_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/project_start_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/project_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF0000" />
 
-    <TextView
-        android:id="@+id/project_end_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/project_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF0000" />
 
-    <TextView
-        android:id="@+id/project_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/project_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/project_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#EA80FC" />
+
+            <TextView
+                android:id="@+id/project_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#EA80FC" />
+
+
+            <TextView
+                android:id="@+id/project_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#EA80FC" />
+
+            <TextView
+                android:id="@+id/project_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF0000" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 
 </LinearLayout>
