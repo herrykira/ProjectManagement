@@ -7,6 +7,8 @@
     <color name="notepad_lines">#FF0000FF</color>
     <color name="notepad_margin">#90FF0000</color>
     <color name="notepad_text">#AA0000FF</color>
+    <color name="inactive_color">#44c6ea</color>
+    <color name="active_color">#ed7c44</color>
 </resources>
 
 

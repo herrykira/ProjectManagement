@@ -94,7 +94,7 @@ public class MemberFragment extends Fragment implements MemberView {
         Mobile.setText("Mobile: "+mobile);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Information").setView(myView).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setTitle("Member Information").setView(myView).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();

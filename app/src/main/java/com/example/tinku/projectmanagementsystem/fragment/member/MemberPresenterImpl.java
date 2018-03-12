@@ -101,6 +101,9 @@ public class MemberPresenterImpl implements MemberPresenter {
             @Override
             public void onResponse(Call<MemberTaskResponse> call, Response<MemberTaskResponse> response) {
                 Log.i("MemberTaskResponse",response.body().toString());
+                if(response.body().toString().contains("null")){
+                    return;
+                }
                 List<MembersItem> members = response.body().getMembers();
                 List<String> userIds = new ArrayList<>();
                 for(int i=0;i<members.size();i++){

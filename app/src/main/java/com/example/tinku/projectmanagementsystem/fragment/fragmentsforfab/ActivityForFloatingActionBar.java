@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.tinku.projectmanagementsystem.*;
 
+import com.example.tinku.projectmanagementsystem.fragment.editsubtask.EditSubTaskFragment;
+import com.example.tinku.projectmanagementsystem.fragment.edittask.EditTaskFragment;
+
 public class ActivityForFloatingActionBar extends AppCompatActivity {
 
 
@@ -33,7 +36,13 @@ public class ActivityForFloatingActionBar extends AppCompatActivity {
         } else if (value == 6) {
             //create User
             getSupportFragmentManager().beginTransaction().replace(R.id.container_for_fab, new TabCreateUsers()).commit();
+        }else if(value == 9){
+            //Edit subTask status
+            getSupportFragmentManager().beginTransaction().replace(R.id.container_for_fab, new EditSubTaskFragment()).commit();
         }
-
+        else if(value ==10){
+            //Edit Task status
+            getSupportFragmentManager().beginTransaction().replace(R.id.container_for_fab,new EditTaskFragment()).commit();
+        }
     }
 }

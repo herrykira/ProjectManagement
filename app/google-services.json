@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "627756921795",
-    "firebase_url": "https://project-management-syste-78451.firebaseio.com",
-    "project_id": "project-management-syste-78451",
-    "storage_bucket": "project-management-syste-78451.appspot.com"
+    "project_number": "519890464961",
+    "firebase_url": "https://projectmanagement1-92000.firebaseio.com",
+    "project_id": "projectmanagement1-92000",
+    "storage_bucket": "projectmanagement1-92000.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:627756921795:android:f54a0469d17df5a4",
+        "mobilesdk_app_id": "1:519890464961:android:f54a0469d17df5a4",
         "android_client_info": {
           "package_name": "com.example.tinku.projectmanagementsystem"
         }
       },
       "oauth_client": [
         {
-          "client_id": "627756921795-35ib3ejtvak41l5dud25k1hmbte43cb5.apps.googleusercontent.com",
+          "client_id": "519890464961-jv3nd9uaka3lo8vhj8gp57u4tmvmid5o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.tinku.projectmanagementsystem",
-            "certificate_hash": "c35290d67e036d5b7962c5fa2fc4d74c5cea7801"
+            "certificate_hash": "b66d3d129f5fe3d5b14d917f16d088332db163c6"
           }
         },
         {
-          "client_id": "627756921795-9ie9ai8e7ukgpo1c2cq06b1b2r5bj17g.apps.googleusercontent.com",
+          "client_id": "519890464961-tqtp3nn9b883ahist9lp11alfm0gtkk8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC9iOH1liuKZh9LcB7CAWY5cBirQQcefaE"
+          "current_key": "AIzaSyDwJYsAGGq4AWVhb9kEbF7io4dr0NN-ZFs"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "627756921795-9ie9ai8e7ukgpo1c2cq06b1b2r5bj17g.apps.googleusercontent.com",
+              "client_id": "519890464961-tqtp3nn9b883ahist9lp11alfm0gtkk8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -10,6 +10,7 @@ import com.example.tinku.projectmanagementsystem.R;
 import com.example.tinku.projectmanagementsystem.fragment.FragmentSwitch;
 import com.example.tinku.projectmanagementsystem.fragment.forgot.ForgotFragment;
 import com.example.tinku.projectmanagementsystem.fragment.login.LoginFragment;
+import com.example.tinku.projectmanagementsystem.ui.user.UserActivity;
 
 public class LoginActivity extends AppCompatActivity implements FragmentSwitch,ActivitySwitch {
     SharedPreferences sharedPreferences;
